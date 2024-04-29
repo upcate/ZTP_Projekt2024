@@ -12,12 +12,17 @@ use Symfony\Component\Routing\Attribute\Route;
 /**
  * Class AdController.
  */
-#[Route('/adlist')]
+#[Route('/ad')]
 class AdController extends AbstractController
 {
 
+    /**
+     * Ad index function.
+     *
+     * @return Response
+     */
     #[Route(
-        name: 'adlist_index',
+        name: 'ad_index',
         methods: 'GET',
     )]
     public function index(): Response
