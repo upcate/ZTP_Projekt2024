@@ -8,6 +8,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Service\AdService;
 
 /**
  * Class AdController.
@@ -15,6 +16,15 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/ad')]
 class AdController extends AbstractController
 {
+
+    /**
+     * AdController constructor.
+     *
+     * @param AdService $adService
+     */
+    public function __construct(private readonly AdService $adService)
+    {
+    }
 
     /**
      * Ad index function.
