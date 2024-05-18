@@ -1,9 +1,13 @@
 <?php
+/**
+ * AdRepository.
+ */
 
 namespace App\Repository;
 
 use App\Entity\Ad;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -11,9 +15,30 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class AdRepository extends ServiceEntityRepository
 {
+    /**
+     * Items per page on paginated list.
+     */
+    private const ITEMS_PER_PAGE = 10;
+
+    /**
+     * Constructor.
+     *
+     * @param ManagerRegistry $registry Manager Registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Ad::class);
+    }
+
+    /**
+     * Query All Ads.
+     *
+     * @return QueryBuilder Query Builder
+     */
+    public function queryAll(): QueryBuilder
+    {
+        $queryBuilder = $this->createQueryBuilder()
+            ->select('ad.{createdAt}');
     }
 
     //    /**

@@ -16,11 +16,10 @@ use App\Service\AdService;
 #[Route('/ad')]
 class AdController extends AbstractController
 {
-
     /**
      * AdController constructor.
      *
-     * @param AdService $adService
+     * @param AdService $adService Ad Service
      */
     public function __construct(private readonly AdService $adService)
     {
@@ -29,7 +28,7 @@ class AdController extends AbstractController
     /**
      * Ad index function.
      *
-     * @return Response
+     * @return Response Response
      */
     #[Route(
         name: 'ad_index',
@@ -37,9 +36,6 @@ class AdController extends AbstractController
     )]
     public function index(): Response
     {
-
         return new Response();
-
     }
-
 }

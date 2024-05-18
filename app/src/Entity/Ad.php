@@ -9,13 +9,15 @@ use App\Repository\AdRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * class Ad.
+ * Class Ad.
  */
 #[ORM\Entity(repositoryClass: AdRepository::class)]
 class Ad
 {
     /**
-     * Id.
+     * Int id.
+     *
+     * @param ?int $id Id
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -23,61 +25,17 @@ class Ad
     private ?int $id = null;
 
     /**
-     * Created At.
+     * DateTimeImmutable createdAt.
+     *
+     * @var ?\DateTimeImmutable $createdAt Created At
      */
     #[ORM\Column]
-     *
-     * @psalm-suppress PropertyNotSetInConstructor
-     */
-    #[ORM\Column(type: 'datetime_immutable')]
-    private ?DateTimeImmutable $updatedAt;
-
-    /**
-     * Title.
-     *
-     * @var string|null
-     */
-    #[ORM\Column(type: 'string', length: 255)]
-    private ?string $title = null;
-
-    /**
-     * Getter for Id.
-     *
-     * @return int|null Id
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    /**
-     * Getter for created at.
-     *
-     * @return DateTimeImmutable|null Created at
-     */
-    public function getCreatedAt(): ?DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Setter for created at.
-     *
-     * @param DateTimeImmutable|null $createdAt Created at
-     */
-    public function setCreatedAt(?DateTimeImmutable $createdAt): void
-    {
-        $this->createdAt = $createdAt;
-    }
-
-    /**
-     * Getter for updated at.
-     *
-     * @return DateTimeImmutable|null
     private ?\DateTimeImmutable $createdAt = null;
 
     /**
-     * function getId.
+     * Function getId.
+     *
+     * @return ?int
      */
     public function getId(): ?int
     {
@@ -85,7 +43,9 @@ class Ad
     }
 
     /**
-     * function getCreatedAt.
+     * Function getCreatedAt.
+     *
+     * @return ?\DateTimeImmutable
      */
     public function getCreatedAt(): ?\DateTimeImmutable
     {
@@ -93,11 +53,11 @@ class Ad
     }
 
     /**
-     * function setCreatedAt.
-     * 
-     * @param \DateTimeImmutable $createdAt
+     * Function setCreatedAt.
+     *
+     * @param \DateTimeImmutable $createdAt Created At
      */
-    public function setCreatedAt(\DateTimeImmutable $createdAt)
+    public function setCreatedAt(\DateTimeImmutable $createdAt): void
     {
         $this->createdAt = $createdAt;
     }

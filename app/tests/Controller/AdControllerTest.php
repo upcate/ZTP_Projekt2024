@@ -23,7 +23,7 @@ class AdControllerTest extends WebTestCase
 
         // when
 
-        $client->request('GET', '/adlist');
+        $client->request('GET', '/ad');
         $responseCode = $client->getResponse()->getStatusCode();
 
         // then
