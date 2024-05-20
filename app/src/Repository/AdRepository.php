@@ -7,6 +7,9 @@ namespace App\Repository;
 
 use App\Entity\Ad;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Exception\ORMException;
+use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -15,11 +18,6 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class AdRepository extends ServiceEntityRepository
 {
-    /**
-     * Items per page on paginated list.
-     */
-    private const ITEMS_PER_PAGE = 10;
-
     /**
      * Constructor.
      *
@@ -31,14 +29,57 @@ class AdRepository extends ServiceEntityRepository
     }
 
     /**
-     * Query All Ads.
+     * Function Query All.
      *
      * @return QueryBuilder Query Builder
      */
     public function queryAll(): QueryBuilder
     {
-        $queryBuilder = $this->createQueryBuilder()
-            ->select('ad.{createdAt}');
+        $queryBuilder = $this->getOrCreateQueryBuilder()
+            ->orderBy('ad.createdAt', 'DESC');
+
+        return $this->$queryBuilder;
+    }
+
+    /**
+     * Save Entity.
+     *
+     * @param Ad $ad Ad Entity
+     *
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+    public function save(Ad $ad): void
+    {
+        assert($this->_em instanceof EntityManager);
+        $this->_em->persist($ad);
+        $this->_em->flush();
+    }
+
+    /**
+     * Delete Entity.
+     *
+     * @param Ad $ad Ad Entity
+     *
+     * @throws ORMException
+     */
+    public function delete(Ad $ad): void
+    {
+        assert($this->_em instanceof EntityManager);
+        $this->_em->remove($ad);
+        $this->_em > flush();
+    }
+
+    /**
+     * Get or create new query builder.
+     *
+     * @param QueryBuilder|null $queryBuilder Query Builder
+     *
+     * @return QueryBuilder Query Builder
+     */
+    private function getOrCreateQueryBuilder(?QueryBuilder $queryBuilder = null): QueryBuilder
+    {
+        return $queryBuilder ?? $this->createQueryBuilder('ad');
     }
 
     //    /**

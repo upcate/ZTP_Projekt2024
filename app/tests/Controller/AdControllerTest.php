@@ -30,4 +30,13 @@ class AdControllerTest extends WebTestCase
 
         $this->assertEquals(200, $responseCode);
     }
+
+    public function testAdPagination(): void
+    {
+        //given
+
+        //when
+
+        //then
+    }
 }
