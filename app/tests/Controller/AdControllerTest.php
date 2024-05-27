@@ -5,12 +5,18 @@
 
 namespace App\Tests\Controller;
 
+use App\Service\AdService;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * Class AdListControllerTest.
  */
 class AdControllerTest extends WebTestCase
+
+private $paginator =
+
 {
     /**
      * Test Ad List Route.
@@ -33,10 +39,15 @@ class AdControllerTest extends WebTestCase
 
     public function testAdPagination(): void
     {
-        //given
+        // given
+        $tempPaginationArray = [];
+        for ($i = 0; $i < 11; ++$i) {
+            $tempPaginationArray[$i] = $i;
+        }
+        $paginator = new PaginationInterfaceImplementation();
+        $paginator->paginate($tempPaginationArray, AdService::ITEMS_PER_PAGE);
+        // when
 
-        //when
-
-        //then
+        // then
     }
 }

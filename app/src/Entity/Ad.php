@@ -7,6 +7,7 @@ namespace App\Entity;
 
 use App\Repository\AdRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class Ad.
@@ -29,7 +30,8 @@ class Ad
      *
      * @var ?\DateTimeImmutable $createdAt Created At
      */
-    #[ORM\Column]
+    #[ORM\Column(type: 'datetime_immutable')]
+    #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTimeImmutable $createdAt = null;
 
     /**

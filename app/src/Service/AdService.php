@@ -6,7 +6,6 @@
 namespace App\Service;
 
 use App\Repository\AdRepository;
-use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
@@ -17,7 +16,7 @@ class AdService implements AdServiceInterface
     /**
      * Items per page on paginated list.
      */
-    private const ITEMS_PER_PAGE = 10;
+    public const ITEMS_PER_PAGE = 10;
 
     /**
      * Constructor.
