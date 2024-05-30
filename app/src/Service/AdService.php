@@ -7,17 +7,13 @@ namespace App\Service;
 
 use App\Repository\AdRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 
 /**
  * Class AdService.
  */
 class AdService implements AdServiceInterface
 {
-    /**
-     * Items per page on paginated list.
-     */
-    public const ITEMS_PER_PAGE = 10;
-
     /**
      * Constructor.
      *
@@ -32,8 +28,15 @@ class AdService implements AdServiceInterface
      * Get Paginated List.
      *
      * @param int $page Page
+     *
+     * @return PaginationInterface Pagination Interface
      */
-    public function getPaginatedList(int $page): void
+    public function getPaginatedList(int $page): PaginationInterface
     {
+        return $this->paginator->paginate(
+            $this->adRepository->queryAll(),
+            $page,
+            AdRepository::ITEMS_PER_PAGE
+        );
     }
 }

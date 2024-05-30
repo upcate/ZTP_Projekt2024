@@ -14,18 +14,23 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  * Class AdListControllerTest.
  */
 class AdControllerTest extends WebTestCase
-
-private $paginator =
-
 {
+    /**
+     * Set up.
+     */
+    public function setUp(): void
+    {
+        $this->httpClient = static::createClient();
+    }
+
     /**
      * Test Ad List Route.
      */
-    public function testAdRoute(): void
+    public function testIndexRoute(): void
     {
         // given
 
-        $client = static::createClient();
+        $client = $this->httpClient;
 
         // when
 
@@ -37,16 +42,18 @@ private $paginator =
         $this->assertEquals(200, $responseCode);
     }
 
-    public function testAdPagination(): void
+    /**
+     * Test Show Route.
+     */
+    public function testShowRoute(): void
     {
         // given
-        $tempPaginationArray = [];
-        for ($i = 0; $i < 11; ++$i) {
-            $tempPaginationArray[$i] = $i;
-        }
-        $paginator = new PaginationInterfaceImplementation();
-        $paginator->paginate($tempPaginationArray, AdService::ITEMS_PER_PAGE);
+
+        $client = $this->httpClient;
+
         // when
+
+
 
         // then
     }

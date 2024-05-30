@@ -19,6 +19,11 @@ use Doctrine\Persistence\ManagerRegistry;
 class AdRepository extends ServiceEntityRepository
 {
     /**
+     * Items per page on paginated list.
+     */
+    public const ITEMS_PER_PAGE = 10;
+
+    /**
      * Constructor.
      *
      * @param ManagerRegistry $registry Manager Registry
