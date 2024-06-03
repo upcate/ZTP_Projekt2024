@@ -9,7 +9,6 @@ use App\Service\AdService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapQueryParameter;
-use Symfony\Component\HttpKernel\EventListener\StreamedResponseListener;
 use Symfony\Component\Routing\Attribute\Route;
 
 /**
@@ -44,13 +43,14 @@ class AdController extends AbstractController
 
         return $this->render('ad/index.html.twig');
     }
-
-    #[Route(
-        name: 'ad_show',
-        methods: 'GET',
-    )]
-    public function show(): Repsonse
-    {
-        return new Response();
-    }
 }
+
+//    #[Route(
+//        name: 'ad_show',
+//        methods: 'GET',
+//    )]
+//    public function show(): Repsonse
+//    {
+//        return new Response();
+//    }
+// }

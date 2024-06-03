@@ -28,11 +28,11 @@ class Ad
     /**
      * DateTimeImmutable createdAt.
      *
-     * @var ?\DateTimeImmutable $createdAt Created At
+     * @var ?\DateTimeImmutable $createdAt createdAt At
      */
     #[ORM\Column(type: 'datetime_immutable')]
     #[Gedmo\Timestampable(on: 'create')]
-    private ?\DateTimeImmutable $createdAt = null;
+    private ?\DateTimeImmutable $createdAt;
 
     /**
      * Function getId.
@@ -57,7 +57,7 @@ class Ad
     /**
      * Function setCreatedAt.
      *
-     * @param \DateTimeImmutable $createdAt Created At
+     * @param \DateTimeImmutable $createdAt createdAt At
      */
     public function setCreatedAt(\DateTimeImmutable $createdAt): void
     {

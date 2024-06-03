@@ -45,16 +45,16 @@ class AdControllerTest extends WebTestCase
     /**
      * Test Show Route.
      */
-    public function testShowRoute(): void
-    {
-        // given
-
-        $client = $this->httpClient;
-
-        // when
-
-
-
-        // then
-    }
+//    public function testShowRoute(): void
+//    {
+//        // given
+//
+//        $client = $this->httpClient;
+//
+//        // when
+//
+//
+//
+//        // then
+//    }
 }
